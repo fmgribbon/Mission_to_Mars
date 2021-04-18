@@ -8,7 +8,7 @@ import scraping
 app = Flask(__name__)
 
 # Use flask_pymongo to set up mongo connection
-app.config["MONGO_URL"] = "mongodb://localhost:27017/mars_app"
+app.config["MONGO_URI"] = "mongodb://localhost:27017/mars_app"
 mongo = PyMongo(app)
 
 #  *******************
@@ -21,6 +21,7 @@ mongo = PyMongo(app)
 def index():
     # find "mars" collection
     mars = mongo.db.mars.find_one()
+    print(mars)
     # return an HTML template using "index.html" file
     # Python command mars = mars to use MongoDB collection "mars" 
     return render_template("index.html",mars=mars)
