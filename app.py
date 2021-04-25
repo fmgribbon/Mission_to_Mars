@@ -21,12 +21,12 @@ mongo = PyMongo(app)
 def index():
     # find "mars" collection
     mars = mongo.db.mars.find_one()
-    print(mars)
+
     # return an HTML template using "index.html" file
     # Python command mars = mars to use MongoDB collection "mars" 
     return render_template("index.html",mars=mars)
 
-#  Function to Displays scraping data
+#  Function to Displays scrapipython ng data
 #  **********************************
 #  Defines the route "/scrape"
 #  ***************************
@@ -43,6 +43,7 @@ def scrape():
 #                          "data"  = mars_data
 #                          "upsert" = True (add a new document if does not exists )
    mars.update({}, mars_data, upsert=True)
+   
 #  add redirect after successful scraping the data - navigate back route('/')
    return redirect('/', code=302)
 
